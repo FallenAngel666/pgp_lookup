@@ -1,0 +1,9 @@
+{
+  "remote":[
+    {
+      "name": "test_name",
+      "path": "test_path",
+      "type": 1
+    }
+  ]
+}
