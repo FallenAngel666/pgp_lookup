@@ -27,24 +27,20 @@ if __name__ == '__main__':
         if args.email:
             url = remote.path.format(email=args.email)
             try:
-                print(f"trying for Email: {args.email} and remoter provider {remote.name}...")
                 found_pgp = search_for_pub_key(url)
             except HTTPError:
                 continue
         else:
-            sys.stdout.write('Provide at least email param')
+            sys.stderr.write('Provide at least email param!\n')
             sys.exit(2)
 
     if found_pgp is None:
-        sys.stderr.write(f'No public PGP keys were found!')
+        sys.stderr.write(f'No public PGP keys were found!\n')
         sys.exit(2)
 
     if args.qr_code:
         create_qr_from_string(args.qr_code, url)
-        print(f'QR: {args.qr_code}')
     if args.file:
         save_public_key(found_pgp, args.file)
-        print(f'file path: {args.file}')
 
     sys.stdout.write(found_pgp.decode("utf-8"))
-
