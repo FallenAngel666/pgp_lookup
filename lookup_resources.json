@@ -1,0 +1,9 @@
+{
+  "remote":[
+    {
+      "name": "ProtonMail",
+      "path": "https://mail-api.proton.me/pks/lookup?op=get&search={email}",
+      "type": 1
+    }
+  ]
+}
